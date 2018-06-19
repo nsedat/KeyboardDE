@@ -383,7 +383,7 @@ uint8_t USBPutChar(uint8_t c);
 // to the persistent key report and sends the report.  Because of the way 
 // USB HID works, the host acts like the key remains pressed until we 
 // call release(), releaseAll(), or otherwise clear the report and resend.
-size_t Keyboard_::press_iso(uint8_t k) 
+size_t Keyboard_::press(uint8_t k) 
 {
 	uint8_t i;
 
@@ -428,7 +428,7 @@ size_t Keyboard_::press_iso(uint8_t k)
 // release() takes the specified key out of the persistent key report and
 // sends the report.  This tells the OS the key is no longer pressed and that
 // it shouldn't be repeated any more.
-size_t Keyboard_::release_iso(uint8_t k) 
+size_t Keyboard_::release(uint8_t k) 
 {
 	uint8_t i;
 	k = pgm_read_byte(_asciimap_iso + k);
@@ -488,8 +488,8 @@ size_t Keyboard_::write(uint8_t c)
 		return 1;
 	}
 	
-	uint8_t p = press_iso(c);  // Keydown
-	release_iso(c);            // Keyup
+	uint8_t p = press(c);  // Keydown
+	release(c);            // Keyup
 
 	return p;              // just return the result of press() since release() almost always returns 1
 }

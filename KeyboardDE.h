@@ -86,8 +86,8 @@ public:
   void end(void);
   void releaseAll(void);
   size_t write(uint8_t k);
-  size_t press_iso(uint8_t k);
-  size_t release_iso(uint8_t k);
+  size_t press(uint8_t k);
+  size_t release(uint8_t k);
   byte utf8ascii(byte ascii);
   String utf8ascii(String s);
   void utf8ascii(char* s);
